@@ -1,0 +1,1786 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notas de aula do curso de Sistemas Programação em C da FACOM/UFU">
+      
+      
+      
+      
+        <link rel="prev" href="../cap23/">
+      
+      
+        <link rel="next" href="../cap25/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Navegação dentro do arquivo - Notas de Aula em Programação em C</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-65TK61CS8M"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-65TK61CS8M",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-65TK61CS8M",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#navegacao-dentro-do-arquivo" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Notas de Aula em Programação em C" class="md-header__button md-logo" aria-label="Notas de Aula em Programação em C" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notas de Aula em Programação em C
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Navegação dentro do arquivo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lasarojc/c_notes" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Notas de Aula em Programação em C" class="md-nav__button md-logo" aria-label="Notas de Aula em Programação em C" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Notas de Aula em Programação em C
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lasarojc/c_notes" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prefácio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O computador é uma máquina burra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compilação e Execução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variáveis, Entrada / Saída e Operadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variáveis (II)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seleção Simples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seleção Simples (II)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Switch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repetição (I)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repetição (II)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arranjos Unidimensionais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caracteres, Vetores de Caracteres e Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bits, bytes e bases numéricas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Strings e Funções
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funções Úteis I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arranjos Multidimensionais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ordenação de Arranjos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estruturas Não-Homogêneas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referências II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alocação Dinâmica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vetores de Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alocação Dinâmica II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegação dentro do arquivo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegação dentro do arquivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#posicionamento-no-arquivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Posicionamento no arquivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-formatados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos formatados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercícios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercícios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-binarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos binários
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquivos binários">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fechamento-de-arquivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fechamento de Arquivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leitura-e-escrita-de-arquivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leitura e Escrita de Arquivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alocação Dinâmica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BigNum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pilhas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Árvores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#posicionamento-no-arquivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Posicionamento no arquivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-formatados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos formatados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercícios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercícios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-binarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos binários
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquivos binários">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fechamento-de-arquivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fechamento de Arquivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leitura-e-escrita-de-arquivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leitura e Escrita de Arquivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="navegacao-dentro-do-arquivo">Navegação dentro do arquivo</h1>
+<p>Embora seja possível trabalhar com arquivos usando apenas as ferramentas apresentadas até agora,
+alguns problemas são de difícil resolução, a não ser que extendamos nosso conhecimento.</p>
+<p>Suponha por exemplo que você tenha o seguinte arquivo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>O rato roeu a roupa do
+<span class="linenos" data-linenos="2 "></span>rei de Roma e a rainha
+<span class="linenos" data-linenos="3 "></span>Ruinha resolveu rir-se
+<span class="linenos" data-linenos="4 "></span>pois o rei que remente
+<span class="linenos" data-linenos="5 "></span>suas roídas roupagens.
+</code></pre></div>
+<p>Observe que todas as linhas tem o mesmo tamanho (22 caracteres) e que a palavra "remende" está
+escrita de forma incorreta. Para corrigir esta palavra, podemos reescrever toda a frase, ou
+posicionar o cursor do arquivo exatamente sobre o caractere errado e corrigi-lo. Há várias formas de
+se fazer isso, como veremos agora.</p>
+<h2 id="posicionamento-no-arquivo">Posicionamento no arquivo</h2>
+<p>Como visto no capítulo anterior, operações de leitura e escrita no arquivo vão mudando a posição em
+que as próximas operações serão executadas. Isto é, se considerarmos que há um cursor dentro do
+arquivo, na posição em escreveremos, caso uma escrita seja feita, ou leremos, caso uma leitura seja
+executada, então se lermos ou escrevermos 3 caracteres, então o cursor "andará" 3 caracteres. Se
+quisermos colocar o cursor no fim do arquivo, podemos reabrí-lo usando <code>ios::app</code>. Caso
+queiramos colocar o cursor no começo do arquivo, podemos simplesmente reabri-lo sem especificar
+qualquer opção ou usando <code>ios::trunc</code> (e com isso também zerarmos nosso arquivo). </p>
+<p>Caso precisemos posicionar o cursor no meio do arquivo, podemos usar a função <code>seekg</code>, que
+pode ser usada duas formas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>seekg(nova posição [em bytes])
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span>seekg(diferença [em bytes] em relação ao marco, marco)
+</code></pre></div>
+<p>Na primeira forma você pode especificar onde o cursor deve ser posicionado em relação ao início do
+arquivo, em número de bytes. Por exemplo, <code>arq.seekg(10)</code> posiciona o cursor no décimo
+byte do arquivo <code>arq</code>. Já pela segunda forma, você especifica onde posicionar o cursor em
+relação a um marco no arquivo, que pode ser seu início (<code>ios_base::beg</code>), fim
+(<code>ios_base::end</code>), ou posição atual (<code>ios_base::cur</code>). A diferença em relação ao
+marco é especificada como um inteiro com sinal. Por exemplo,
+<code>arq.seekg(-10,ios_base::end)</code> posiciona o cursor no décimo caractere <em>antes do fim</em>
+do arquivo <code>arq</code>.</p>
+<p>Para resolver o problema apresentado acima, podemos então usar as seguintes soluções.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="p">{</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">arq</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;arquivo.txt&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">//Posicionando o cursor no inicio.</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">23</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">20</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">arq</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;arquivo.txt&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">//Buscando a partir do fim.</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">-23-3</span><span class="p">,</span><span class="w"> </span><span class="n">ios_base</span><span class="o">::</span><span class="n">end</span><span class="p">);</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="n">arq</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;arquivo.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">trunc</span><span class="p">);</span><span class="w"> </span><span class="c1">//Recriando o arquivo.</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="n">arq</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;O rato roeu a roupa do&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;rei de Roma e a rainha&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Ruinha resolveu rir-se&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;pois o rei que remende&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;suas roidas roupagens.&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="linenos" data-linenos="26 "></span>
+<span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="28 "></span>
+<span class="linenos" data-linenos="29 "></span><span class="p">}</span>
+<span class="linenos" data-linenos="30 "></span><span class="s">&quot;</span>
+</code></pre></div>
+<h2 id="arquivos-formatados">Arquivos formatados</h2>
+<p>Para que se possa movimentar o cursor dentro de um arquivo, é importante que se conheça a estrutura
+do mesmo, principalmente se pretender sobrescrevê-lo sem destruí-lo. Por exemplo, considere o
+seguinte problema.</p>
+<p>Escrever um programa que leia matrícula e nome de alunos do curso de Engenharia Química e armazene
+estas informações em um arquivo. Em seguida, seu programa deve escrever todas as informações na
+tela, precedidas por um número identificando cada aluno. Finalmente, o programa deve ler números
+correspondentes a alunos e sobrescrever os dados do aluno com novas informações.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="linenos" data-linenos="  2 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+<span class="linenos" data-linenos="  3 "></span>
+<span class="linenos" data-linenos="  4 "></span><span class="cp">#define NOME_ARQ &quot;arquivo.txt&quot;</span>
+<span class="linenos" data-linenos="  5 "></span>
+<span class="linenos" data-linenos="  6 "></span><span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+<span class="linenos" data-linenos="  7 "></span>
+<span class="linenos" data-linenos="  8 "></span><span class="kt">bool</span><span class="w"> </span><span class="nf">mais_info</span><span class="p">()</span>
+<span class="linenos" data-linenos="  9 "></span><span class="p">{</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">resp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;x&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 11 "></span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Entrar com mais informacoes? (s/n)&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 12 "></span>
+<span class="linenos" data-linenos=" 13 "></span><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 14 "></span><span class="w">    </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 15 "></span><span class="w">        </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">resp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 16 "></span>
+<span class="linenos" data-linenos=" 17 "></span><span class="w">        </span><span class="k">switch</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 18 "></span><span class="w">        </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 19 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;s&#39;</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 20 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;S&#39;</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 21 "></span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 22 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;n&#39;</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 23 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;N&#39;</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="w">        </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 26 "></span><span class="w">    </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 27 "></span><span class="p">}</span>
+<span class="linenos" data-linenos=" 28 "></span>
+<span class="linenos" data-linenos=" 29 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">ler_aluno</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">mat</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tmat</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">nome</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tnome</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 30 "></span><span class="p">{</span>
+<span class="linenos" data-linenos=" 31 "></span><span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">ignore</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 32 "></span><span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Digite a matricula (max &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">tmat</span><span class="mi">-1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; caracteres:)&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 34 "></span><span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span><span class="n">tmat</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 35 "></span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Digite o nome (max &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">tnome</span><span class="mi">-1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; caracteres&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 36 "></span><span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">nome</span><span class="p">,</span><span class="n">tnome</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 37 "></span><span class="p">}</span>
+<span class="linenos" data-linenos=" 38 "></span>
+<span class="linenos" data-linenos=" 39 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 40 "></span><span class="p">{</span>
+<span class="linenos" data-linenos=" 41 "></span><span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">arq</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 42 "></span>
+<span class="linenos" data-linenos=" 43 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">totalcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 44 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 45 "></span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">linha</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+<span class="linenos" data-linenos=" 46 "></span>
+<span class="linenos" data-linenos=" 47 "></span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="mi">15</span><span class="p">];</span>
+<span class="linenos" data-linenos=" 48 "></span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">nome</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="linenos" data-linenos=" 49 "></span>
+<span class="linenos" data-linenos=" 50 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">NOME_ARQ</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 51 "></span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="w"> </span><span class="n">arq</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span>
+<span class="linenos" data-linenos=" 52 "></span><span class="w">        </span><span class="n">arq</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">NOME_ARQ</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">in</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">trunc</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 53 "></span>
+<span class="linenos" data-linenos=" 54 "></span><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">mais_info</span><span class="p">())</span>
+<span class="linenos" data-linenos=" 55 "></span><span class="w">    </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 56 "></span><span class="w">        </span><span class="n">ler_aluno</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 57 "></span><span class="w">        </span><span class="n">arq</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">mat</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">nome</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 58 "></span><span class="w">    </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 59 "></span>
+<span class="linenos" data-linenos=" 60 "></span><span class="w">    </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 61 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 62 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 63 "></span>
+<span class="linenos" data-linenos=" 64 "></span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Dados atuais&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 65 "></span><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">arq</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">linha</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+<span class="linenos" data-linenos=" 66 "></span><span class="w">    </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 67 "></span>
+<span class="linenos" data-linenos=" 68 "></span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">linha</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="w">        </span><span class="n">totalcount</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 70 "></span><span class="w">    </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 71 "></span>
+<span class="linenos" data-linenos=" 72 "></span><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">mais_info</span><span class="p">())</span>
+<span class="linenos" data-linenos=" 73 "></span><span class="w">    </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 74 "></span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Sobrescrever qual linha?&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 75 "></span><span class="w">        </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 76 "></span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">totalcount</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 77 "></span><span class="w">        </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 78 "></span><span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Linha nao existente&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 79 "></span><span class="w">        </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 80 "></span><span class="w">        </span><span class="k">else</span>
+<span class="linenos" data-linenos=" 81 "></span><span class="w">        </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 82 "></span><span class="w">            </span><span class="n">ler_aluno</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 83 "></span>
+<span class="linenos" data-linenos=" 84 "></span><span class="w">            </span><span class="n">arq</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 85 "></span><span class="w">            </span><span class="n">arq</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 86 "></span><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 87 "></span><span class="w">            </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 88 "></span><span class="w">                </span><span class="n">arq</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">linha</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 89 "></span><span class="w">                </span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="w">            </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 91 "></span><span class="w">            </span><span class="n">arq</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">mat</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">nome</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 92 "></span><span class="w">        </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 93 "></span><span class="w">    </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 94 "></span>
+<span class="linenos" data-linenos=" 95 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 96 "></span><span class="w">    </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 97 "></span><span class="w">    </span><span class="n">arq</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">arq</span><span class="p">.</span><span class="n">beg</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 98 "></span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Dados atuais&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 99 "></span><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">arq</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">linha</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+<span class="linenos" data-linenos="100 "></span><span class="w">    </span><span class="p">{</span>
+<span class="linenos" data-linenos="101 "></span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">linha</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos" data-linenos="102 "></span><span class="w">    </span><span class="p">}</span>
+<span class="linenos" data-linenos="103 "></span>
+<span class="linenos" data-linenos="104 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="105 "></span><span class="p">}</span>
+</code></pre></div>
+<p>Este código possui duas particularidades. Primeiro, ele usa a função <code>arq.clear()</code>, ainda
+não mencionada e, segundo, ele está errado.</p>
+<p>Toda vez que o arquivo é lido até o seu fim, seu estado interno é mudado para identificar o fato.
+Isto é verificável pela função <code>arq.eof()</code>, que testa se o arquivo chegou ao <em>end of
+file</em>. Quando isso é verdade, as funções de reposicionamento não funcionarão, a não ser que este
+status seja reiniciado, o que é feito com a função <code>clear()</code>. No código simplesmente
+usamos esta função sempre que formos fazer um <em>seek</em>, por simplicidade.</p>
+<p>Sobre o código não funcionar como esperado, execute-o e insira um aluno apenas, com matrícula
+"aaaaaaaaaa" e nome "bbbbbbbbbb". Em seguida, altere os dados da linha 1 e insira matrícula "cc" e
+nome "dd". Ao final, os dados impressos serão os seguintes:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Dados atuais
+<span class="linenos" data-linenos="2 "></span>1 - cc dd
+<span class="linenos" data-linenos="3 "></span>2 - aaaa bbbbbbbbbb
+</code></pre></div>
+<h2 id="exercicios">Exercícios</h2>
+<h3 id="_1"></h3>
+<p>Corrija o programa exemplo mostrado acima para que escreva sempre linhas de um mesmo tamanho e que,
+portanto, não tenha o problema de fragmentação de registros.</p>
+<table>
+<thead>
+<tr>
+<th>ios::ate</th>
+<th>Posiciona no fim do arquivo. Se não for usado, é posicionado no início.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="arquivos-binarios">Arquivos binários</h2>
+<table>
+<thead>
+<tr>
+<th>ios::binary</th>
+<th>Modo não formatado. (Próximo capítulo)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>O argumento <code>nome_do_arquivo</code> é o caminho do arquivo que se deseja abrir, e
+<code>modo_de_abertura</code> representa como o arquivo será aberto, de acordo com a tabela a seguir:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>| **Modo** | **Descrição** |
+</code></pre></div>
+<p>| --- | --- |
+| r | Abre arquivo texto somente para leitura |
+| w | Cria arquivo texto somente para escrita |
+| a | Anexa dados a um arquivo texto |
+| r+ | Abre arquivo texto para leitura e escrita |
+| w+ | Cria arquivo onde poderão ser realizadas leituras e escritas |
+| a+ | Anexa dados a um arquivo texto ou cria um para leitura e escrita |
+  <em>Modos de abertura de arquivo texto em C.</em></p>
+<h4 id="fechamento-de-arquivo">Fechamento de Arquivo</h4>
+<p>Um arquivo aberto sempre deve ser fechado antes do fim do programa. A função que realiza essa tarefa
+é <code>fclose</code>. Seu protótipo é:</p>
+<p><code>int fclose(FILE *arq);</code></p>
+<p>O argumento <code>arq</code> é a variável que representa o arquivo aberto (com <code>fopen</code>)
+O retorno dessa função é zero em caso de sucesso. Qualquer valor diferente de zero, significa erro.</p>
+<h4 id="leitura-e-escrita-de-arquivo">Leitura e Escrita de Arquivo</h4>
+<p>A função <code>fputc</code> escreve um caractere em um arquivo. Seu protótipo é:
+      <code>int fputc(char ch, FILE *arq);</code></p>
+<p>A função <code>fputs</code> escreve um cadeia de caracteres em um arquivo. Seu protótipo é:
+      <code>char *fputs(char *cadeia, FILE *arq);</code></p>
+<p>A função <code>fgetc</code> lê um caractere em um arquivo. Seu protótipo é:
+      <code>int fgetc(FILE *arq);</code></p>
+<p>A função <code>fgets</code> lê um cadeia de caracteres em um arquivo. Seu protótipo é:
+      <code>char *fgets(char *cadeia, int tam, FILE *arq);</code>, onde <code>tam</code> define o tamanho
+      da cadeia que será lida: tam-1 ou fim de linha, o que ocorrer primeiro.</p>
+<p>A função <code>fprintf</code> permite escrever em um arquivo da mesma forma que escrevemos na tela
+com o <code>printf</code>. Seu protótipo é:
+      <code>int fprintf(FILE *arq, char *formato, ...);</code></p>
+<p>A função <code>fscanf</code> lê informações de um arquivo da mesma forma que lemos do teclado com o
+<code>scanf</code>. Seu protótipo é:
+      <code>int fscanf(FILE *arq, char *formato, ...);</code></p>
+<h4 id="exemplos">Exemplos</h4>
+<p>```c</p>
+<h1 id="include">include <stdio.h></h1>
+<h1 id="include_1">include <stdlib.h></h1>
+<p>int main(){
+  FILE *arq;
+  char nome1[20], nome2[20], linha[20];
+  arq = fopen("teste.txt", "w");
+  printf("entre nome1: "); scanf("%s", nome1);
+  printf("entre nome2: "); scanf("%s", nome2);
+  fputs(nome1, arq);
+  fputs("\n", arq);
+  fputs(nome2, arq);
+  fclose(arq);
+  arq = fopen("teste.txt", "r");
+  printf("lendo do arquivo:\n");
+  fgets(linha, 20, arq);
+  printf("\tnome1: %s", linha);
+  fgets(linha, 20, arq);
+  printf("\tnome2: %s\n", linha);
+  return 0;
+}
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>```c
+<span class="linenos" data-linenos=" 2 "></span>#include &lt;stdio.h&gt;
+<span class="linenos" data-linenos=" 3 "></span>#include &lt;stdlib.h&gt;
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span>int main(){
+<span class="linenos" data-linenos=" 6 "></span>  FILE *arq;
+<span class="linenos" data-linenos=" 7 "></span>  char nome1[20], nome2[20], linha[20];
+<span class="linenos" data-linenos=" 8 "></span>  arq = fopen(&quot;teste.txt&quot;, &quot;w&quot;);
+<span class="linenos" data-linenos=" 9 "></span>  printf(&quot;entre nome1: &quot;); scanf(&quot;%s&quot;, nome1);
+<span class="linenos" data-linenos="10 "></span>  printf(&quot;entre nome2: &quot;); scanf(&quot;%s&quot;, nome2);
+<span class="linenos" data-linenos="11 "></span>  fprintf(arq, &quot;%s\n%s&quot;, nome1, nome2);
+<span class="linenos" data-linenos="12 "></span>  fclose(arq);
+<span class="linenos" data-linenos="13 "></span>  arq = fopen(&quot;teste.txt&quot;, &quot;r&quot;);
+<span class="linenos" data-linenos="14 "></span>  printf(&quot;lendo do arquivo:\n&quot;);
+<span class="linenos" data-linenos="15 "></span>  fscanf(arq, &quot;%s&quot;, nome1);
+<span class="linenos" data-linenos="16 "></span>  fscanf(arq, &quot;%s&quot;, nome2);
+<span class="linenos" data-linenos="17 "></span>  printf(&quot;nome1: %s\nnome2: %s\n&quot;, nome1, nome2);
+<span class="linenos" data-linenos="18 "></span>  return 0;
+<span class="linenos" data-linenos="19 "></span>}
+</code></pre></div></p>
+<h1 id="part-avancado-estruturas-de-dados">Part: Avançado: Estruturas de dados</h1>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2021 Lásaro Camargos
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lasarojc/c_notes" target="_blank" rel="noopener" title="These notes on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["search.suggest", "search.highlight", "navigation.indexes", "navigation.tracking"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../javascripts/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>
