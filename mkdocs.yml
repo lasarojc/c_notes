@@ -1,6 +1,6 @@
 
 site_name: Notas de Aula em Programação em C 
-repo_url: https://github.com/lasarojc/fp_notes 
+repo_url: https://github.com/lasarojc/c_notes
 site_description: Notas de aula do curso de Sistemas Programação em C da FACOM/UFU
 edit_uri: ""
 
@@ -78,7 +78,7 @@ extra:
 #    - icon: fontawesome/brands/twitter
 #      link: https://twitter.com/...
     - icon: fontawesome/brands/github
-      link: https://github.com/lasarojc/ds_notes 
+      link: https://github.com/lasarojc/c_notes
       name: These notes on Github
 #    - icon: fontawesome/brands/slack
 #      link: https://slack.knative.dev
@@ -109,35 +109,34 @@ plugins:
 
 
 nav:
-        - Apresentação: preface.md
-        - Capítulos:
-            - "O computador é uma máquina burra": cap01.md
-            - "Compilação e Execução": cap02.md
-            - "Variáveis, Entrada / Saída e Operadores": cap03.md
-            - "Variáveis (II)": cap04.md
-            - "Seleção Simples": cap05.md
-            - "Seleção Simples (II)": cap06.md
-            - "Switch": cap07.md
-            - "Repetição (I)": cap08.md
-            - "Repetição (II)": cap09.md
-            - "Arranjos Unidimensionais": cap10.md
-            - "Caracteres, Vetores de Caracteres e Strings": cap11.md
-            - "Bits, bytes e bases numéricas": cap12.md
-            - "Strings e Funções": cap13.md
-            - "Funções Úteis I": cap14.md
-            - "Arranjos Multidimensionais": cap15.md
-            - "Ordenação de Arranjos": cap16.md
-            - "Estruturas Não-Homogêneas": cap17.md
-            - "Referências": cap18.md
-            - "Referências II": cap19.md
-            - "Alocação Dinâmica": cap20.md
-            - "Vetores de Referências": cap21.md
-            - "Alocação Dinâmica II": cap22.md
-            - "Arquivos": cap23.md
-            - "Navegação dentro do arquivo": cap24.md
-            - "Alocação Dinâmica": cap25.md
-            - "BigNum": cap26.md
-            - "Listas": cap27.md
-            - "Filas": cap28.md
-            - "Pilhas": cap29.md
-            - "Árvores": cap30.md
+        - Prefácio: preface.md
+        - "O computador é uma máquina burra": cap01.md
+        - "Compilação e Execução": cap02.md
+        - "Variáveis, Entrada / Saída e Operadores": cap03.md
+        - "Variáveis (II)": cap04.md
+        - "Seleção Simples": cap05.md
+        - "Seleção Simples (II)": cap06.md
+        - "Switch": cap07.md
+        - "Repetição (I)": cap08.md
+        - "Repetição (II)": cap09.md
+        - "Arranjos Unidimensionais": cap10.md
+        - "Caracteres, Vetores de Caracteres e Strings": cap11.md
+        - "Bits, bytes e bases numéricas": cap12.md
+        - "Strings e Funções": cap13.md
+        - "Funções Úteis I": cap14.md
+        - "Arranjos Multidimensionais": cap15.md
+        - "Ordenação de Arranjos": cap16.md
+        - "Estruturas Não-Homogêneas": cap17.md
+        - "Referências": cap18.md
+        - "Referências II": cap19.md
+        - "Alocação Dinâmica": cap20.md
+        - "Vetores de Referências": cap21.md
+        - "Alocação Dinâmica II": cap22.md
+        - "Arquivos": cap23.md
+        - "Navegação dentro do arquivo": cap24.md
+        - "Alocação Dinâmica": cap25.md
+        - "BigNum": cap26.md
+        - "Listas": cap27.md
+        - "Filas": cap28.md
+        - "Pilhas": cap29.md
+        - "Árvores": cap30.md
